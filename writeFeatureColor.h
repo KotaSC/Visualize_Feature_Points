@@ -12,8 +12,8 @@ enum WritingDataType {
     Binary = 1
 };
 
-const float NORMAL[3] ={ 0.0, 0.0, 0.0 };
-const int COLOR[3]    = {0, 255, 255};
+const float NORMAL[3] = { 0.0, 0.0, 0.0 };
+const int COLOR[3]    = { 0, 255, 255 };
 
 const double th = 0.3;
 
@@ -97,10 +97,10 @@ void writeFeatureColor( kvs::PolygonObject *ply,
       fout.write( (char*)&cl, sizeof(unsigned char) );
     }
     else {
-      fout << x << " " << y << " " << z << " "
-           << nx << " " << ny << " " << nz << " "
-           << r << " " << g << " " << b  << " "
-           << std::endl;
+      fout  << x << " " << y << " " << z << " "
+            << nx << " " << ny << " " << nz << " "
+            << r << " " << g << " " << b  << " "
+            << std::endl;
     }
   }
 

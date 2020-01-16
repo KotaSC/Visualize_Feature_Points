@@ -2,13 +2,13 @@
 #define _xyzAsciiReader_H__
 
 #include <kvs/PolygonObject>
-#include <kvs/Module> 
+#include <kvs/Module>
 #include <vector>
 
 class xyzAsciiReader: public kvs::PolygonObject
 {
-  kvsModuleSuperClass( kvs::PolygonObject ); 
-  
+  kvsModuleSuperClass( kvs::PolygonObject );
+
  public:
   xyzAsciiReader(void);
   xyzAsciiReader( char* filname );

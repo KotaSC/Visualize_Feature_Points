@@ -2,10 +2,10 @@
 #define _plyRead_H__
 
 #include <kvs/PolygonObject>
-#include <kvs/Module> 
+#include <kvs/Module>
 
 class plyRead: public kvs::PolygonObject {
-    kvsModuleSuperClass( kvs::PolygonObject );   
+    kvsModuleSuperClass( kvs::PolygonObject );
 
 public:
     plyRead(void);
