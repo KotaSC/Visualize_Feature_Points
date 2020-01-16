@@ -13,8 +13,6 @@
 #include <kvs/PointRenderer>
 #include <kvs/Coordinate>
 
-#define ADJUST_POINT_DENSITIES_MODE
-
 const char OUT_FILE[] = "SPBR_DATA/output.spbr";
 
 int main( int argc, char** argv ) {
@@ -37,12 +35,8 @@ int main( int argc, char** argv ) {
 
 
     WritingDataType type = Ascii;
-    writeFeatureColor( ply,
-                outSPBRfile,
-                type
-                );
+    writeFeatureColor( ply, outSPBRfile, type );
 
-    // Convert "kvs::PolygonObject" to "kvs::PointObject"
     kvs::PointObject* object = new kvs::PointObject( *ply );
     object->setSize( 1 );
     object->updateMinMaxCoords();

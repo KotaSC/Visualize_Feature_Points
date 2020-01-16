@@ -111,5 +111,3 @@ int xyzAsciiReader::breakWord( char* buf, std::string *str )
   }
   return n;
 }
-
-

@@ -23,50 +23,50 @@ void writeFeatureColor( kvs::PolygonObject *ply,
                         WritingDataType type = Ascii )
 {
   size_t num     = ply->numberOfVertices();
-  bool hasNormal = false, hasColor              = false;
+  bool hasNormal = false, hasColor = false;
 
   if( num == ply->numberOfNormals() ) hasNormal = true;
   if( num == ply->numberOfColors() ) hasColor   = true;
 
-  kvs::ValueArray<kvs::Real32> coords           = ply->coords();
-  kvs::ValueArray<kvs::Real32> normals          = ply->normals();
-  kvs::ValueArray<kvs::UInt8> colors            = ply->colors();
+  kvs::ValueArray<kvs::Real32> coords  = ply->coords();
+  kvs::ValueArray<kvs::Real32> normals = ply->normals();
+  kvs::ValueArray<kvs::UInt8> colors   = ply->colors();
 
 
   std::ofstream fout( filename);
   if( type == Ascii ) {
-    fout << "#/SPBR_ASCII_Data"       << std::endl;
-    fout << "#/RepeatLevel 1"         << std::endl;
-    fout << "#/BGColorRGBByte 0 0 0"  << std::endl;
-    fout << "#/ImageResolution 1024"  << std::endl;
-    fout << "#/Shading 0"             << std::endl;
-    fout << "#/EndHeader"             << std::endl;
+    fout << "#/SPBR_ASCII_Data"      << std::endl;
+    fout << "#/RepeatLevel 1"        << std::endl;
+    fout << "#/BGColorRGBByte 0 0 0" << std::endl;
+    fout << "#/ImageResolution 1024" << std::endl;
+    fout << "#/Shading 0"            << std::endl;
+    fout << "#/EndHeader"            << std::endl;
   }
 
   for(int i=0; i<num; i++ ) {
 
-    float x  = coords[3*i];
-    float y  = coords[3*i+1];
-    float z  = coords[3*i+2];
+    float x = coords[3*i];
+    float y = coords[3*i+1];
+    float z = coords[3*i+2];
 
     float nx = NORMAL[0];
     float ny = NORMAL[1];
     float nz = NORMAL[2];
 
-    int r    = COLOR[0];
-    int g    = COLOR[1];
-    int b    = COLOR[2];
+    int r = COLOR[0];
+    int g = COLOR[1];
+    int b = COLOR[2];
 
     if( hasNormal ) {
       nx = normals[ 3*i ];
       ny = normals[ 3*i+1 ];
-      nz = normals[ 3*i+2];
+      nz = normals[ 3*i+2 ];
     }
 
     if( hasColor ) {
 
       // Color Edge
-      if(ft[i] > th){
+      if( ft[i] > th ) {
         r = (int)255;
         g = (int)0;
         b = (int)0;
@@ -95,7 +95,6 @@ void writeFeatureColor( kvs::PolygonObject *ply,
       fout.write( (char*)&cl, sizeof(unsigned char) );
       cl = (unsigned char)b;
       fout.write( (char*)&cl, sizeof(unsigned char) );
-
     }
     else {
       fout << x << " " << y << " " << z << " "
@@ -107,6 +106,5 @@ void writeFeatureColor( kvs::PolygonObject *ply,
 
   fout.close();
 }
-
 
 #endif
