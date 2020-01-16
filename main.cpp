@@ -3,7 +3,7 @@
 #include <cstdlib>
 #include <vector>
 #include "importPointClouds.h"
-#include "writeSPBR.h"
+#include "writeFeatureColor.h"
 
 #include <kvs/PolygonObject>
 #include <kvs/PointObject>
@@ -28,7 +28,6 @@ int main( int argc, char** argv ) {
         strcpy( outSPBRfile, argv[2] );
     }
 
-    // Import "point cloud data（.ply, argv[1]）" that user selected
     ImportPointClouds *ply = new ImportPointClouds( argv[1] );
     ply->updateMinMaxCoords();
     std::cout << "\nPLY Min, Max Coords:" << std::endl;
@@ -37,9 +36,8 @@ int main( int argc, char** argv ) {
     std::cout << "Number of points: " << ply->numberOfVertices() << std::endl;
 
 
-    // Write to SPBR file
     WritingDataType type = Ascii;
-    writeSPBR(  ply,
+    writeFeatureColor( ply,
                 outSPBRfile,
                 type
                 );
