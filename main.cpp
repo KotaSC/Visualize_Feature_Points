@@ -20,7 +20,7 @@ int main( int argc, char** argv ) {
     strcpy( outSPBRfile, OUT_FILE );
 
     if ( argc != 3 ) {
-        std::cerr << "USAGE: $ ./vfp [input.spbr] [output.spbr]" << std::endl;
+        std::cerr << "USAGE: $ ./vfp [input.xyz] [output.spbr]" << std::endl;
         exit(1);
     } else {
         strcpy( outSPBRfile, argv[2] );
@@ -33,18 +33,19 @@ int main( int argc, char** argv ) {
     std::cout << "Max : " << ply->maxObjectCoord() << std::endl;
     std::cout << "Number of points: " << ply->numberOfVertices() << std::endl;
 
+    std::vector<float> ft = ply->featureData();
 
     WritingDataType type = Ascii;
-    writeFeatureColor( ply, outSPBRfile, type );
+    writeFeatureColor( ply, ft, outSPBRfile, type );
 
     kvs::PointObject* object = new kvs::PointObject( *ply );
     object->setSize( 1 );
     object->updateMinMaxCoords();
 
     // Exec. SPBR
-    std::string out_noised_spbr( outSPBRfile );
+    std::string out_feature_spbr( outSPBRfile );
     std::string EXEC("spbr ");
-    EXEC += out_noised_spbr;
+    EXEC += out_feature_spbr;
     system( EXEC.c_str() );
 
     return 0;
