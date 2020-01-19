@@ -35,8 +35,13 @@ int main( int argc, char** argv ) {
 
     std::vector<float> ft = ply->featureData();
 
+    double th;
+
+    std::cout << "Input Feature Threshold : ";
+    std::cin >> th;
+
     WritingDataType type = Ascii;
-    writeFeatureColor( ply, ft, outSPBRfile, type );
+    writeFeatureColor( ply, ft, th, outSPBRfile, type );
 
     kvs::PointObject* object = new kvs::PointObject( *ply );
     object->setSize( 1 );
