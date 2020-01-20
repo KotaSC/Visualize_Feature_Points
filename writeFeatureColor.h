@@ -96,81 +96,14 @@ void writeFeatureColor( kvs::PolygonObject *ply,
       fout.write( (char*)&cl, sizeof(unsigned char) );
     }
     else {
-      // if(ft[i] <= th) {
+      if(ft[i] <= th) {
         fout  << x << " " << y << " " << z << " "
               << nx << " " << ny << " " << nz << " "
               << r << " " << g << " " << b
               << std::endl;
-        // fout  << x << " " << y << " " << z << " "
-        //       << r << " " << g << " " << b << " "
-        //       << nx << " " << ny << " " << nz
-        //       << std::endl;
-      // }
+      }
     }
   }
-
-  // for(int i=0; i<num; i++ ) {
-
-  //   float x = coords[3*i];
-  //   float y = coords[3*i+1];
-  //   float z = coords[3*i+2];
-
-  //   float nx = NORMAL[0];
-  //   float ny = NORMAL[1];
-  //   float nz = NORMAL[2];
-
-  //   int r = COLOR[0];
-  //   int g = COLOR[1];
-  //   int b = COLOR[2];
-
-  //   if( hasNormal ) {
-  //     nx = normals[ 3*i ];
-  //     ny = normals[ 3*i+1 ];
-  //     nz = normals[ 3*i+2 ];
-  //   }
-
-  //   if( hasColor ) {
-
-  //     // Color Edge
-  //     if( ft[i] > th ) {
-  //       r = (int)255;
-  //       g = (int)0;
-  //       b = (int)0;
-  //     } else {
-  //       // r = (int)255;
-  //       // g = (int)255;
-  //       // b = (int)255;
-
-  //       r = (int)colors[ 3*i ];
-  //       g = (int)colors[ 3*i+1 ];
-  //       b = (int)colors[ 3*i+2 ];
-  //     }
-  //   }
-  //   if( type == Binary ) {
-  //     fout.write( (char*)&x, sizeof(float) );
-  //     fout.write( (char*)&y, sizeof(float) );
-  //     fout.write( (char*)&z, sizeof(float) );
-
-  //     fout.write( (char*)&nx, sizeof(float) );
-  //     fout.write( (char*)&ny, sizeof(float) );
-  //     fout.write( (char*)&nz, sizeof(float) );
-
-  //     unsigned char cl = (unsigned char)r;
-  //     fout.write( (char*)&cl, sizeof(unsigned char) );
-  //     cl = (unsigned char)g;
-  //     fout.write( (char*)&cl, sizeof(unsigned char) );
-  //     cl = (unsigned char)b;
-  //     fout.write( (char*)&cl, sizeof(unsigned char) );
-  //   }
-  //   else {
-  //     if(ft[i] > th) {
-  //       fout  << x << " " << y << " " << z << " "
-  //             << nx << " " << ny << " " << nz << " "
-  //             << r << " " << g << " " << b
-  //             << std::endl;
-  //     }
-  //   }
-  // }
 
   fout.close();
 }
